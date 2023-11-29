@@ -117,10 +117,6 @@ The report should contain the following:
 In this section, describe the analysis you completed for the machine learning models used in this Challenge. This might include:
 
 * Explain the purpose of the analysis.
-* Explain what financial information the data was on, and what you needed to predict.
-* Provide basic information about the variables you were trying to predict (e.g., `value_counts`).
-* Describe the stages of the machine learning process you went through as part of this analysis.
-* Briefly touch on any methods you used (e.g., `LogisticRegression`, or any resampling method).
 
 The purpose of this analysis to help a nonprofit foundation, Alphabet Soup, select the applicants for funding with the best chance of success in their ventures. 
 
@@ -148,16 +144,16 @@ The models were first binned to eliminate excessive variables in for both applic
 
 ### Summary
 
-Summarize the results of the machine learning models, and include a recommendation on the model to use, if any. For example:
-* Which one seems to perform best? How do you know it performs best?
-* Does performance depend on the problem we are trying to solve? (For example, is it more important to predict the `1`'s, or predict the `0`'s? )
+The initial neural network model involved 268 batches of data with an accuracy of 0.7280 means that approximately 72.80% of the model's predictions were correct. TYhe model achieved an average loss of approximately 0.5586.
 
-The random sampler logistical regression model performed better, but the issues with the prediction of the high risk is an issue when it comes to choosing this model. That being said, if you had to choose which mdoel to use, the choice should be the model with random sampler and more balance between classes. If slightly higher precision in the positive class is more important (like in medical diagnosis), then the original logistical model might be the better choice.
+The second model involved same number of batches, 268, achieving an accuracy of 73.25%. The epoch time was longer, 533ms/epoch versus 453ms/epoch in the initial model. 
+
+I'm not satisfied with these results. Adding neuron, changing activation types, and changing epochs did not move the needle on this model. Suggest tuning the model or doing other work via proper binning. Because I segmented the bins at a higher rate, it probably eliminated variables helpful in the successful/not successful binary classification. Most likely, all my changes did is overfit a model that was not great to begin with. 
  
 
 ## Dependencies
 
-* Using Jupyter notebooks for the analysis of the models. 
+* Using Google Collaboratory to do the coding and reading in the CSV file. 
 
 ## Installing
 
