@@ -122,41 +122,28 @@ In this section, describe the analysis you completed for the machine learning mo
 * Describe the stages of the machine learning process you went through as part of this analysis.
 * Briefly touch on any methods you used (e.g., `LogisticRegression`, or any resampling method).
 
-The purpose of this analysis was a ascertain what supervised machine learning model would be best to predict loan classification for credit card users. The financial information is based on the CSV file combined with a splitting of data (around whether it's a healthy (0) versus high risk (1) loan. It was tested after that. Variables outside of the type of loan include loan interest rate, borrower income, debt to income ratio, number of acconts, and total debt. 
+The purpose of this analysis to help a nonprofit foundation, Alphabet Soup, select the applicants for funding with the best chance of success in their ventures. 
 
-The model attempted see the difference between the healthy versus high risk loans. Two separate types of supervised machine learning models were deployed to include: 
+From Alphabet Soup’s business team, you have received a CSV containing more than 34,000 organizations that have received funding from Alphabet Soup over the years. Within this dataset are a number of columns that capture metadata about each organization, such as application type, industry, use case, organization type, income, and if it was successful venture or not, amongst other variables. 
 
-* Logistical regression: Used when the outcome is binary; Simple, scalable, and has clear metrics
-* Logistical regression with Random Sampler: Used to randomly select a subset of data from a larger dataset; Helps prevent over fitting
+The model is attempting to predict which venture might be successful based on the variables. Two separate types of neural network models using a TensorFlow Keras sequential model were deployed to include: 
+
+* Model 1: TensorFlow Keras sequential model, 2 hidden layers, using "relu" and "sigmoid" activations
+* Model 2: TensorFlow Keras sequential model, 6 hidden layers, using "relu" and "sigmoid" activations 
+
+The models were first binned to eliminate excessive variables in for both applications and classification. Categorical data was also changed to dummy variables for neural network modeling. 
 
 ### Results
 
-Using bulleted lists, describe the balanced accuracy scores and the precision and recall scores of all machine learning models.
+* Data Preprocessing
+    * What variable(s) are the target(s) for your model? Successful/Not Successful Understanding
+    * What variable(s) are the features for your model? Data cleaning, Feature Scaling (Using standard scaler)
+    * What variable(s) should be removed from the input data because they are neither targets nor features? EIN and Name as they are not necessary and add nothing to the processing
 
-  * Machine Learning Model 1: Logistical Regression  
-
-The original logistical regression model data tested with 99.184% accuracy with the following confusion matrix below: 
-
-![Screenshot 2023-11-20 210555](https://github.com/Connextstrategy/credit-risk-classification/assets/18508699/e8abbca7-5768-48fb-8eb1-f5c96406d31c)
-
-This confusion matrix has a slightly higher precision due to fewer false positives, meaning it is more accurate when it predicts a positive instance.
-
-Testing report shows a high level of accuracy and an excellent balance between precision and recall for both classes, particularly excelling in class 0 predictions. The decision to deploy or further refine this model would depend on the specific requirements of the task, especially considering the slightly lower (but still strong) performance on the minority class (class 1).
-
-![Screenshot 2023-11-20 211529](https://github.com/Connextstrategy/credit-risk-classification/assets/18508699/351b9a7e-c8bf-4153-b872-5b69ce9e02fd)
-
-
-  * Machine Learning Model 2: Logistical Regression with Random Sampler
-  
-The random sampler logistical regression model data tested with 99.38% accuracy with the following confusion matrix below: 
-
-![Screenshot 2023-11-20 205643](https://github.com/Connextstrategy/credit-risk-classification/assets/18508699/2fa4740b-9138-41d8-bc14-8e0d03203fd7)
-
-This confusion matrix has a higher recall since it has fewer false negatives. This is crucial in scenarios where missing a positive instance can be critical. 
-
-Testing report shows that the model is almost perfect at predicting class 0, with exceptional precision, recall, and F1-score. The model also has very high recall but slightly lower precision. This indicates that the model is very good at identifying class 1 instances, but when it predicts something as class 1, there's a 16% chance it might be wrong.
-
-![Screenshot 2023-11-20 212214](https://github.com/Connextstrategy/credit-risk-classification/assets/18508699/e73837c7-9e6f-43c4-8c48-6ffef78b1e23)
+  * Compiling, Training, and Evaluating the Model
+    * How many neurons, layers, and activation functions did you select for your neural network model, and why? Added more neurons and chose multiple activation types, used through experimentation
+    * Were you able to achieve the target model performance? No. I came close but tried multiple things. I believe it was probably best to bin differently. May have cut out too many variables 
+    * What steps did you take in your attempts to increase model performance? Adding neuron, changing activation types, changing epochs
 
 
 ### Summary
